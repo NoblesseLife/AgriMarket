@@ -1,0 +1,77 @@
+{% extends '/backend/dashbase.html.twig' %}
+
+{% block title %}Categorie{% endblock %}
+
+{% block body %}
+<div class="section-body">
+                    <h2 class="section-title">categories</h2>
+                    <p class="section-lead">We provide advanced input fields, such as date picker, color picker, and so on.</p>
+
+                    <div class="row">
+                        <div class="col-12 col-md-6 col-lg-6">
+                            <div class="card">
+    
+    
+
+                                <div class="card-header">
+                                    <h4>categorie</h4>
+                                </div>
+                                <div class="card-body">
+                                {{ form_start(form) }}
+                                    <div class="form-group">
+                                        <label>Nom de la categorie</label>
+                                        {{ form_row(form.NomCat) }}
+                                    </div>
+                                     <div class="form-group">
+                                        <label>Description</label>
+                                        {{ form_row(form.DesCat) }}
+                                    </div>
+                                    <button class="btn">{{ button_label|default('Creer') }}</button>
+                                {{ form_end(form) }}
+                                </div>
+                            </div>
+                        
+                        </div>
+                        <div class="col-12 col-md-6 col-lg-6">
+                        <div class="card-header">
+                                    <h4>liste des categories</h4>
+                                </div>
+                            <div class="card">
+                                <table class="table">
+                                    <thead>
+                                        <tr>
+                                            <th>Id</th>
+                                            <th>NomCat</th>
+                                            <th>DesCat</th>
+                                            <th>actions</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                    {% for categorie in categories %}
+                                        <tr>
+                                            <td>{{ categorie.id }}</td>
+                                            <td>{{ categorie.NomCat }}</td>
+                                            <td>{{ categorie.DesCat }}</td>
+                                            <td>
+                                                <a href="{{ path('app_categorie_edit', {'id': categorie.id}) }}"><i class="fa fa-edit"></i></a>
+                                                <a href="{{ path('app_categorie_delete', {'id': categorie.id}) }}" onclick="return confirm('Are you sure you want to delete this item?')"><i class="fa fa-close"></i></a>
+                                            </td>
+                                        </tr>
+                                    {% else %}
+                                        <tr>
+                                            <td colspan="4">no records found</td>
+                                        </tr>
+                                    {% endfor %}
+                                    </tbody>
+                                </table>
+
+                                
+                            </div>
+                           
+                        </div>
+                    </div>
+                </div>
+
+
+    
+{% endblock %}

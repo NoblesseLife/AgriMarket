@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    {% include 'backend/links/linkcss.html.twig' %}
+</head>
+<body>
+<div id="app">
+    <section class="section">
+        <div class="container mt-5">
+            <div class="row">
+                <div class="col-12 col-sm-8 offset-sm-2 col-md-6 offset-md-3 col-lg-6 offset-lg-3 col-xl-4 offset-xl-4">
+                    <div class="login-brand">
+                        <img src="http://puffintheme.com/craft/codiepie/dist/assets/img/CodiePie-fill.svg" alt="logo" width="100" class="shadow-light rounded-circle">
+                    </div>
+                    <div class="card card-primary">
+                        <div class="card-header">
+                            <h4>Login</h4>
+                        </div>
+                        {% if error %}
+                            <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+                        {% endif %}
+
+                        {% if app.user %}
+                            <div class="mb-3">
+                                You are logged in as {{ app.user.userIdentifier }}, <a href="{{ path('app_logout') }}">Logout</a>
+                            </div>
+                        {% endif %}
+                                    
+                                    
+                        <div class="card-body">
+                            <form method="POST" action="#" class="needs-validation" novalidate="">
+                                <div class="form-group">
+                                    <label for="email">Email</label>
+                                    <input id="email" class="form-control" value="{{ last_username }}" name="_username" id="username" tabindex="1" required autofocus>
+                                    <div class="invalid-feedback">
+                                        Entrez votre Email
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="d-block">
+                                        <label for="password" class="control-label">Password</label>
+                                        <div class="float-right">
+                                            <a href="auth-forgot-password.html" class="text-small">
+                                           Mot de passe oublié?
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <input id="password" type="password" class="form-control" name="_password"  class="form-control" autocomplete="current-password" tabindex="2" required>
+                                    <div class="invalid-feedback">
+                                        Entrez votre mot de passe
+                                    </div>
+                                </div>
+                                                                <input type="hidden" name="_csrf_token"
+                                            value="{{ csrf_token('authenticate') }}"
+                                        >
+
+                                        {#
+                                            Uncomment this section and add a remember_me option below your firewall to activate remember me functionality.
+                                            See https://symfony.com/doc/current/security/remember_me.html
+
+                                            <div class="checkbox mb-3">
+                                                <label>
+                                                    <input type="checkbox" name="_remember_me"> Remember me
+                                                </label>
+                                            </div>
+                                        #}
+                               
+                                <div class="form-group">
+                                    <button type="submit" class="btn btn-primary btn-lg btn-block" tabindex="4">
+                                    se connecter
+                                    </button>
+                                </div>
+                            </form>
+                         
+                        </div>
+                    </div>
+                    <div class="mt-5 text-muted text-center">
+                        Vous avez pas un compte? <a href="{{ path ('app_register')}}">Céer un compte</a>
+                    </div>
+                    <div class="simple-footer">
+                        Copyright &copy; AgroMarket 2024
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+{% include 'backend/links/linkjs.html.twig' %}
+</body>
+</html>
+
+

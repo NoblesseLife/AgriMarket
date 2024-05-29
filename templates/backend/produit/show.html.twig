@@ -1,0 +1,46 @@
+{% extends '/backend/dashbase.html.twig' %}
+
+{% block title %}Produit{% endblock %}
+
+{% block body %}
+    <h1>Produit</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ produit.id }}</td>
+            </tr>
+            <tr>
+                <th>NomPro</th>
+                <td>{{ produit.NomPro }}</td>
+            </tr>
+            <tr>
+                <th>DesPro</th>
+                <td>{{ produit.DesPro }}</td>
+            </tr>
+            <tr>
+                <th>PrixPro</th>
+                <td>{{ produit.PrixPro }}</td>
+            </tr>
+            <tr>
+                <th>StockDispo</th>
+                <td>{{ produit.StockDispo }}</td>
+            </tr>
+            <tr>
+                <th>ImgPro</th>
+                <td>{{ produit.ImgPro }}</td>
+            </tr>
+            <tr>
+                <th>Slug</th>
+                <td>{{ produit.slug }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_produit_index') }}">back to list</a>
+
+    <a href="{{ path('app_produit_edit', {'slug': produit.Slug}) }}">edit</a>
+
+    {{ include('backend/produit/_delete_form.html.twig') }}
+{% endblock %}

@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    {% include 'backend/links/linkcss.html.twig' %}
+</head>
+<body>
+<div id="app">
+    <section class="section">
+        <div class="container mt-5">
+            <div class="row">
+                <div class="col-12 col-sm-10 offset-sm-1 col-md-8 offset-md-2 col-lg-8 offset-lg-2 col-xl-8 offset-xl-2">
+                    <div class="login-brand">
+                        <img src="http://puffintheme.com/craft/codiepie/dist/assets/img/CodiePie-fill.svg" alt="logo" width="100" class="shadow-light rounded-circle">
+                    </div>
+                    <div class="card card-primary">
+                        <div class="card-header">
+                            <h4>Inscription</h4>
+                        </div>
+                        <div class="card-body">
+                        {{ form_errors(registrationForm) }}
+                            {{ form_start(registrationForm) }}
+                                <div class="row">
+                                    <div class="form-group col-6">
+                                        <label for="frist_name">Nom</label>
+                                        {{ form_row(registrationForm.Nom) }}
+                                    </div>
+                                    <div class="form-group col-6">
+                                        <label for="last_name">Prenom</label>
+                                        {{ form_row(registrationForm.Prenom) }}
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="email">Email</label>
+                                    {{ form_row(registrationForm.email) }}
+                                    <div class="invalid-feedback">
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="form-group col-6">
+                                        <label for="password" class="d-block">Mot de passe</label>
+                                        {{ form_row(registrationForm.plainPassword) }}
+                                        <div id="pwindicator" class="pwindicator">
+                                            <div class="bar"></div>
+                                            <div class="label"></div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group col-6">
+                                        <label for="password2" class="d-block">Mote de passe Confirmation</label>
+                                        <input id="password2" type="password" class="form-control" name="password-confirm">
+                                    </div>
+                                </div>
+                                <div class="form-divider">Votre Adresse</div>
+                                <div class="row">
+                                    <div class="form-group col-6">
+                                        <label>Pays</label>
+                                           {{ form_row(registrationForm.Pays) }}
+                                    </div>
+                                    <div class="form-group col-6">
+                                        <label>Ville ou Adresse postal</label>
+                                        {{ form_row(registrationForm.Ville) }}
+                                    </div>
+                                </div>
+                               
+                                <div class="form-group">
+                                    <div class="custom-control custom-checkbox">
+                                   
+                                        <input type="checkbox" name="agree" class="custom-control-input" id="agree">
+                                        <label class="custom-control-label" for="agree">J'accepte les termes et conditions</label>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <button type="submit" class="btn btn-primary btn-lg btn-block">Register</button>
+                                </div>
+                            {{ form_end(registrationForm) }}
+                        </div>
+                    </div>
+                    <div class="simple-footer">
+                        Copyright &copy; CodiePie 2020
+                    </div>
+                </div>
+
+                    
+            </div>
+        </div>
+    </section>
+</div>
+
+{% include 'backend/links/linkjs.html.twig' %}
+</body>
+</html>
